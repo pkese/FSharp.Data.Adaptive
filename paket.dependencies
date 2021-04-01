@@ -3,8 +3,8 @@ redirects: off
 storage: none
 framework: auto-detect
 
-nuget FSharp.Core                           >= 4.7.0 lowest_matching: true
-nuget System.Reflection.Emit.Lightweight    >= 4.6.0 lowest_matching: true
+nuget FSharp.Core                           >= 4.7.2 lowest_matching: true
+nuget System.Reflection.Emit.Lightweight    >= 4.7.0 lowest_matching: true
 
 # Tests : intentionally in main group
 nuget FsUnit                                ~> 3.4.1
@@ -17,7 +17,7 @@ nuget BenchmarkDotNet                       ~> 0.12.0
 
 # Fable demo
 nuget Fable.Core                            ~> 3.2.5
-nuget Fable.Browser.Dom                     ~> 1.1.0
+nuget Fable.Browser.Dom                     ~> 2.3.0
 
 group Build
   framework: netstandard2.0
