@@ -103,7 +103,7 @@ namespace System.Runtime.CompilerServices
 
 type ConditionalWeakTable<'K, 'V when 'K : not struct and 'V : not struct>() =
     
-    let m = Fable.Core.JS.WeakMap.Create<'K, 'V> []
+    let m = Fable.Core.JS.Constructors.WeakMap.Create<'K, 'V> []
 
     member x.TryGetValue(key : 'K) =
         if m.has key then (true, m.get key)

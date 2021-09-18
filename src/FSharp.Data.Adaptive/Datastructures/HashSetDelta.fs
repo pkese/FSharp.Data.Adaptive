@@ -29,8 +29,12 @@ type HashSetDelta<'T>(store: HashMap<'T, int>) =
     /// Adds a SetOperation to the HashSetDelta.
     member x.Add (op: SetOperation<'T>) =
         if op.Count <> 0 then
-            store |> HashMap.alterV op.Value (fun o ->
-                let n = match o with | ValueNone -> op.Count | ValueSome o -> o + op.Count
+            store |> HashMap.alterV op.Value (fun (o: voption<int>) ->
+                //let n = defaultValueArg o 0 + op.Count
+                let n =
+                    match o with
+                    | ValueNone -> op.Count
+                    | ValueSome c -> c + op.Count
                 if n = 0 then ValueNone
                 else ValueSome n
             )

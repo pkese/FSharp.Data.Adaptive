@@ -18,5 +18,6 @@
         "packages/": true,
         "bin/": true,
         "**/BenchmarkDotNet.Artifacts/": true,
-    }
+    },
+    "FSharp.suggestGitignore": false
 }

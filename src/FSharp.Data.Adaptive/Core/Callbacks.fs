@@ -10,7 +10,9 @@ type private CallbackDisposable(remove : unit -> unit, makeGCRoot : bool, callba
     let mutable isDisposed = false
     let mutable callback = callback
     let mutable remove = remove
-    #if !FABLE_COMPILER
+    #if FABLE_COMPILER
+    do ignore this // avoid compiler warning for unused `this`
+    #else
     let mutable gc = if makeGCRoot then GCHandle.Alloc(this) else Unchecked.defaultof<GCHandle>
     #endif
 
