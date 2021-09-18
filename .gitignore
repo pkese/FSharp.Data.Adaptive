@@ -22,5 +22,5 @@ symbolCache.db
 *.suo
 /docs/output
 /node_modules
-/.fable
-*.fs.js
+src/Demo/Fable/.fable
+src/Demo/Fable/*.fs.js

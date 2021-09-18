@@ -1,37 +1,21 @@
-// Note this only includes basic configuration for development mode.
-// For a more comprehensive configuration check:
-// https://github.com/fable-compiler/webpack-config-template
-const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
-var path = require("path");
+const targetDir = path.resolve(__dirname, "src/Demo/Fable/");
 
-var production = process.argv.indexOf("-p") >= 0;
-
-module.exports = {
-	context: path.join(__dirname, "./src/Demo/Fable/"),
-    mode: production ? "production" : "development",
-    entry: {
-        bundle: path.join(__dirname, "./src/Demo/Fable/Program.fs.js"),
+const config = {
+  mode: "development",
+  entry: path.resolve(targetDir, "Program.fs.js"),
+  output: {
+    path: path.resolve(targetDir, 'dist'),
+    filename: 'bundle.js'
+  },
+  devServer: {
+    static: {
+      directory: targetDir,
     },
-    output: {
-        path: path.join(__dirname, "./bin/Fable"),
-        filename: "[name].js",
-    },
-    devServer: {
-        contentBase: path.join(__dirname, "./bin/Fable"),
-        port: 8080,
-        host: '0.0.0.0',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': '*',
-        },
-        clientLogLevel: 'error'
+    port: 8080,
+  },  
+};
 
-    },
-    devtool: production ? false : "eval-source-map",
-	plugins: [
-	  new CopyPlugin([
-	    { from: path.join(__dirname, "./src/Demo/Fable/index.html"), to: path.join(__dirname, "./bin/Fable/index.html") }
-	  ])
-    ]
-}
+module.exports = config;

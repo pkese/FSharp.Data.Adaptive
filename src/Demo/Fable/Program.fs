@@ -1,10 +1,7 @@
 ﻿module Program
 
 open FSharp.Data.Adaptive
-
-//open Fable
 open Browser
-//open Fable.Import
 
 let document = Dom.document
 
